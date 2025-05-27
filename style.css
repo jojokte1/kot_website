@@ -1,0 +1,199 @@
+*{ /* หมายถึงเลือกทุกองค์ประกอบ (ทุกแท็ก)*/ 
+    margin: 0; /*ล้าง margin และ padding เพื่อความสม่ำเสมอ*/
+    padding: 0;
+    box-sizing: border-box; /*ให้ขนาดรวม padding และ border อยู่ภายในความกว้างของกล่อง*/
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    background-image: url(/img/ToramOnlineScreenshot2024_12_29_21_38_25.png);
+    background-repeat: no-repeat;
+    background-size: cover; /* ขยายภาพให้เต็มพื้นที่ header โดยไม่เสียสัดส่วน */
+    background-position: center; /* จัดภาพให้อยู่กึ่งกลาง */
+    color: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo{
+    width: 200px;
+    height: auto;
+    padding: 15px 0;
+}
+
+nav{
+    background-color: pink;
+    padding: 15px;
+    text-align: center;
+}
+nav a{
+    color: #fff;
+    text-decoration: none;
+    padding: 0 20px;
+}
+
+ .forum{
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+} 
+
+.main-paple{
+    height: auto;
+}
+    .main-container{
+        background-color: pink;
+        padding: 10px;
+        margin: 10px;
+        flex: 1;
+    }
+
+    .main-title{
+        text-decoration: none;
+    }
+
+    .paple{
+        display: flex;        /* เรียงแนวนอน */
+        /*gap: 0;              ช่องว่างระหว่างรูป */
+        position: relative;
+        width: 100%;
+        height: 250px; 
+        max-width: 400px;
+        margin: auto;
+        overflow: hidden; 
+        justify-content: center;
+        align-items: center;
+    }
+
+    .news{
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain; /* แสดงรูปโดยไม่ตัดขอบ และไม่บิดเบี้ยว */
+        display: none;
+        position: absolute;
+    }
+
+    .paple .prev,
+    .paple .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+    .paple .prev { left: 10px; }
+    .paple .next { right: 10px; }
+
+    .main-content{
+        background-color: pink;
+        margin: 0px 0;
+
+    }
+
+    .on-content{
+        padding: 10px;
+        text-align: center;
+    }
+
+    .profile{
+      display: grid; /*display: grid เปิดใช้ CSS Grid*/
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /*grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) บอกให้สร้างคอลัมน์อัตโนมัติ โดยแต่ละคอลัมน์มีความกว้างขั้นต่ำ 200px และขยายเต็มที่ (1fr) ถ้ามีพื้นที่*/
+      gap: 20px;
+      text-align: center;
+      font-size: small;
+      height: 1300px;
+      overflow-y: auto;/* แสดง scrollbar แนวตั้งถ้าข้อมูลเกิน */
+    }
+
+
+    .profile-card{
+      background: #fff;
+      border-radius: 10px;
+      padding: 10px;
+      margin: 5px;
+      perspective: 1000px;/* ระยะการมอง 3 มิติ (ยิ่งมากจะดูนุ่มนวลขึ้น) */
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .flip-card {
+        width: 100%;/* เต็มขนาดของ profile-card */
+        height: 100%;
+        cursor: pointer;/* เปลี่ยนเมาส์เป็น pointer เมื่อชี้ (สื่อว่าคลิกได้) */
+    }
+
+    .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.6s; /* ใส่ transition ให้พลิกนุ่มนวล */
+        transform-style: preserve-3d; /* เปิดให้รองรับการหมุน 3 มิติ */
+    }
+
+    .flip-card.clicked .flip-card-inner {
+        transform: rotateY(180deg);      /* หมุนด้าน Y (แนวนอน) 180 องศาเมื่อมี class clicked */
+    }
+
+    .flip-card-front, .flip-card-back {
+        position: absolute;              /* ซ้อนทับกัน */
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;     /* ซ่อนด้านหลังของแต่ละหน้าไว้ */
+        border-radius: 10px;             /* มุมมนเล็กน้อย */
+        overflow: hidden;                /* ป้องกันเนื้อหาล้น */
+    }
+
+    .profile-card img{
+      max-width: 100%;
+      height: 180px;
+      object-fit: cover;  /* ตัด/ขยายภาพให้พอดีกล่อง โดยไม่บิดเบี้ยว */
+      border-radius: 10px;
+    }
+
+    .flip-card-front img {
+        width: 100%;/* ขยายภาพให้เต็มด้านหน้า */
+        height: 100%;
+        object-fit: cover; /* ครอบภาพให้เต็มไม่ยืดผิดสัดส่วน */
+    }
+
+    .flip-card-back {
+        background-color: #f2f2f2;/* สีพื้นด้านหลัง */
+        color: #333; /* สีตัวอักษร */
+        transform: rotateY(180deg); /* หมุน 180 องศา (เตรียมไว้กลับด้าน) */
+        display: flex; /* จัดข้อความตรงกลาง */
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        text-align: center;
+    }
+
+     @media (max-width: 768px) {
+      .profile {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+       .header {
+        height: 120px; /* ลดความสูงเมื่อเปิดในหน้าจอมือถือ */
+        background-size: contain; /* ทำให้ภาพไม่ถูกตัดขอบ */
+        background-position: center;
+    }
+    }
+
+footer{
+    background-color: #111;
+    padding: 20px;
+    color: #fff;
+    text-align: center;
+}
